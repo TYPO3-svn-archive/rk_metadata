@@ -63,19 +63,18 @@ class tx_rkmetadata_user extends tslib_pibase {
 	 * The main method of the PlugIn
 	 *
 	 * @param string $content: The PlugIn content
-	 * @param array $conf: The PlugIn configuration
+	 * @param array $configuration: The PlugIn configuration
 	 * @return string The content that is displayed on the website
 	 */
-	function renderMetadata($content,$conf) {
-		//var_dump($conf);
-		$this->conf = $conf;
+	function renderMetadata($content, $configuration) {
+		$this->conf = $configuration;
 		$this->sys_page = t3lib_div::makeInstance('t3lib_pageSelect');
 		$this->sys_page->init($GLOBALS['TSFE']->showHiddenPage);
 
 		$templateLayouts = array (
-			'title' => $conf['layouts.']['title'],
-			'description' => $conf['layouts.']['description'],
-			'keywords' => $conf['layouts.']['keywords']
+			'title' => $configuration['layouts.']['title'],
+			'description' => $configuration['layouts.']['description'],
+			'keywords' => $configuration['layouts.']['keywords']
 		);
 		$a_alternativePageContent = $this->getAlternativePageContent();
 
@@ -117,24 +116,15 @@ class tx_rkmetadata_user extends tslib_pibase {
 	function getAlternativePageContent(){
 		$a_alternativePageContent = array(
 			'keywords' => $GLOBALS['TSFE']->page['keywords'],
-			'tx_rkmetadata_keywords_layout' => $GLOBALS['TSFE']->page['tx_rkmetadata_keywords_layout'],
 			'description' => $GLOBALS['TSFE']->page['description'],
-			'tx_rkmetadata_descriptions_layout' => $GLOBALS['TSFE']->page['tx_rkmetadata_descriptions_layout'],
-			'tx_rkmetadata_titletag' => $GLOBALS['TSFE']->page['tx_rkmetadata_titletag']
 		);
 
 		foreach($GLOBALS['TSFE']->rootLine as $a_page){
 			$a_pageData = $this->getPageData($a_page['uid']);
 			if ( empty($a_alternativePageContent['keywords']) ){ $a_alternativePageContent['keywords'] = $a_pageData['keywords']; }
-			if ( empty($a_alternativePageContent['tx_rkmetadata_keywords_layout']) ){ $a_alternativePageContent['tx_rkmetadata_keywords_layout'] = $a_pageData['tx_rkmetadata_keywords_layout']; }
 			if ( empty($a_alternativePageContent['description']) ){ $a_alternativePageContent['description'] = $a_pageData['description']; }
-			if ( empty($a_alternativePageContent['tx_rkmetadata_descriptions_layout']) ){ $a_alternativePageContent['tx_rkmetadata_descriptions_layout'] = $a_pageData['tx_rkmetadata_descriptions_layout']; }
-			if ( empty($a_alternativePageContent['tx_rkmetadata_titletag']) ){ $a_alternativePageContent['tx_rkmetadata_titletag'] = $a_pageData['tx_rkmetadata_titletag']; }
 			if ( empty($a_alternativePageContent['tx_rkmetadata_seo']) ){ $a_alternativePageContent['tx_rkmetadata_seo'] = $a_pageData['tx_rkmetadata_seo']; }
 		}
-
-		if ( empty($a_alternativePageContent['tx_rkmetadata_keywords_layout']) && !empty($a_alternativePageContent['keywords']) ){ $a_alternativePageContent['tx_rkmetadata_keywords_layout'] = '<keywords>'; }
-		if ( empty($a_alternativePageContent['tx_rkmetadata_descriptions_layout']) && !empty($a_alternativePageContent['description']) ){ $a_alternativePageContent['tx_rkmetadata_descriptions_layout'] = '<description>'; }
 
 		return $a_alternativePageContent;
 	}

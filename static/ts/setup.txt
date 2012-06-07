@@ -1,0 +1,5 @@
+config.noPageTitle = 2
+
+page.headerData.1221 = USER
+page.headerData.1221.userFunc = tx_rkmetadata_pi1->renderMetadata
+page.headerData.1221.websiteName = {$config.website.name}

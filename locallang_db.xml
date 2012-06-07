@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'rk_metadata'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pages.tx_rkmetadata_titletag">Title tag layout</label>
+			<label index="pages.tx_rkmetadata_keywords_layout">Keywords layout</label>
+			<label index="pages.tx_rkmetadata_descriptions_layout">Descriptions layout</label>
+			<label index="pages.tx_rkmetadata_seo.I.0">--</label>
+			<label index="pages.tx_rkmetadata_seo.I.1">noindex, nofollow</label>
+			<label index="pages.tx_rkmetadata_seo.I.2">index, follow</label>
+			<label index="pages.tx_rkmetadata_seo.I.3">noindex, follow</label>
+			<label index="pages.tx_rkmetadata_seo.I.4">index, nofollow</label>
+			<label index="pages.tx_rkmetadata_seo">Indexing / following</label>
+			
+			<label index="pages_language_overlay.tx_rkmetadata_seo.I.0">--</label>
+			<label index="pages_language_overlay.tx_rkmetadata_seo.I.1">noindex, nofollow</label>
+			<label index="pages_language_overlay.tx_rkmetadata_seo.I.2">index, follow</label>
+			<label index="pages_language_overlay.tx_rkmetadata_seo.I.3">noindex, follow</label>
+			<label index="pages_language_overlay.tx_rkmetadata_seo.I.4">index, nofollow</label>
+			<label index="pages_language_overlay.tx_rkmetadata_seo">Indexing / following</label>
+			<label index="pages_language_overlay.tx_rkmetadata_titletag">Title tag layout</label>
+			<label index="pages_language_overlay.tx_rkmetadata_keywords_layout">Keywords layout</label>
+			<label index="pages_language_overlay.tx_rkmetadata_descriptions_layout">Descriptions layout</label>
+		</languageKey>
+	</data>
+</T3locallang>

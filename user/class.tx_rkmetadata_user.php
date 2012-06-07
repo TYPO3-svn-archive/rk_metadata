@@ -165,16 +165,16 @@ class tx_rkmetadata_user extends tslib_pibase {
 					if ($val == 'website' && !empty($this->conf['websiteName'])){
 						$s_replaceStr = $this->conf['websiteName'];
 						break;
-					} elseif($val == 'keywords' && !empty($this->s_keyWords)) {
+					} elseif ($val == 'keywords' && !empty($this->s_keyWords)) {
 						$s_replaceStr = $this->s_keyWords;
 						break;
-					} elseif($val == 'description' && !empty($this->s_description)) {
+					} elseif ($val == 'description' && !empty($this->s_description)) {
 						$s_replaceStr = $this->s_description;
 						break;
-					} elseif(!empty($val) && !empty($GLOBALS['TSFE']->page[$val])) {
+					} elseif (!empty($val) && !empty($GLOBALS['TSFE']->page[$val])) {
 						$s_replaceStr = $GLOBALS['TSFE']->page[$val];
 						break;
-					} elseif(preg_match('/\{(.*?)\}/', $val, $a_dbSelectConf)) {
+					} elseif (preg_match('/\{(.*?)\}/', $val, $a_dbSelectConf)) {
 						if( $this->getDBFieldValue($a_dbSelectConf[1]) ){
 							$s_replaceStr = $this->getDBFieldValue($a_dbSelectConf[1]);
 							break;
@@ -184,16 +184,15 @@ class tx_rkmetadata_user extends tslib_pibase {
 				$s_data = str_replace('<'.$a_val[0].'//'.$a_val[1].'>',$s_replaceStr,$s_data);
 				unset($s_replaceStr);
 			} else {
-					print_r($s_description);
 				if ($a_val[0] == 'website' && !empty($this->conf['websiteName'])){
 					$s_data = str_replace('<website>',$this->conf['websiteName'],$s_data);
-				} elseif($a_val[0] == 'keywords' && !empty($this->s_keyWords)) {
+				} elseif ($a_val[0] == 'keywords' && !empty($this->s_keyWords)) {
 					$s_data = str_replace('<keywords>',$this->s_keyWords,$s_data);
-				} elseif($a_val[0] == 'description' && !empty($this->s_description)) {
+				} elseif ($a_val[0] == 'description' && !empty($this->s_description)) {
 					$s_data = str_replace('<description>',$this->s_description,$s_data);
-				} elseif(!empty($a_val[0]) && !empty($GLOBALS['TSFE']->page[$a_val[0]])) {
+				} elseif (!empty($a_val[0]) && !empty($GLOBALS['TSFE']->page[$a_val[0]])) {
 					$s_data = str_replace('<'.$a_val[0].'>',$GLOBALS['TSFE']->page[$a_val[0]],$s_data);
-				} elseif(preg_match('/\{(.*?)\}/', $a_val[0], $a_dbSelectConf)) {
+				} elseif (preg_match('/\{(.*?)\}/', $a_val[0], $a_dbSelectConf)) {
 					$s_replaceStr = $this->getDBFieldValue($a_dbSelectConf[1]);
 					$s_data = str_replace('<'.$a_dbSelectConf[0].'>',$s_replaceStr,$s_data);
 				}
@@ -219,8 +218,9 @@ class tx_rkmetadata_user extends tslib_pibase {
 		if ( !is_numeric($a_dbSelectConf[1]) ){
 			$a_GParray = explode('|',$a_dbSelectConf[1]);
 			$a_GP = t3lib_div::_GP($a_GParray[0]);
-			foreach( $a_GParray as $v ){
-				if($v != $a_GParray[0]){
+			foreach ( $a_GParray as $v ){
+				if ($v != $a_GParray[0]){
+						/** @var $s_array array */
 					$s_array = $s_array[ $v ];
 				} else {
 					$s_array = $a_GP;
@@ -229,7 +229,7 @@ class tx_rkmetadata_user extends tslib_pibase {
 		} else {
 			$s_array = $a_dbSelectConf[1];
 		}
-		$s_addWhereClause = 'uid="'.intval($s_array).'"' .$this->cObj->enableFields($a_dbSelectConf[0]);
+		$s_addWhereClause = 'uid="' . intval($s_array) . '"' .$this->cObj->enableFields($a_dbSelectConf[0]);
 
 		$a_fieldResult = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
 												$a_dbSelectConf[2],
@@ -248,8 +248,8 @@ class tx_rkmetadata_user extends tslib_pibase {
 
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/rk_metadata/pi1/class.tx_rkmetadata_pi1.php'])	{
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/rk_metadata/pi1/class.tx_rkmetadata_pi1.php']);
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/rk_metadata/user/class.tx_rkmetadata_user.php'])	{
+	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/rk_metadata/user/class.tx_rkmetadata_user.php']);
 }
 
 ?>

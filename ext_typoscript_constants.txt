@@ -1,0 +1,5 @@
+config.metalayouts {
+	title = <title> | <website>
+	description = <description>
+	keywords = <keywords>
+}

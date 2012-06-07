@@ -1,0 +1,11 @@
+plugin.rk_metadata = USER
+plugin.rk_metadata {
+	includeLibs = EXT:rk_metadata/user/class.tx_rkmetadata_user.php
+	userFunc = tx_rkmetadata_user->renderMetadata
+	websiteName = {$config.website.name}
+	layouts {
+		title = {$config.metalayouts.title}
+		description = {$config.metalayouts.description}
+		keywords = {$config.metalayouts.keywords}
+	}
+}
